@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { QRCodeSVG } from 'qrcode.react';
-import { 
-  Sparkles, 
-  QrCode, 
-  BarChart3, 
-  Users, 
-  Gift, 
+import { useState } from "react";
+import Link from "next/link";
+import { QRCodeSVG } from "qrcode.react";
+import {
+  Sparkles,
+  QrCode,
+  BarChart3,
+  Users,
+  Gift,
   Smartphone,
   Check,
   ArrowRight,
@@ -19,13 +19,13 @@ import {
   ShoppingBag,
   Store,
   Heart,
-  Award
-} from 'lucide-react';
+  Award,
+} from "lucide-react";
 
 // FAQ Accordion Component
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <div className="border-b border-gray-200">
       <button
@@ -33,9 +33,13 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         className="w-full py-6 flex items-center justify-between text-left hover:text-primary-500 transition-colors"
       >
         <span className="text-lg font-medium text-gray-900">{question}</span>
-        <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown
+          className={`w-5 h-5 text-gray-500 transition-transform ${isOpen ? "rotate-180" : ""}`}
+        />
       </button>
-      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 pb-6' : 'max-h-0'}`}>
+      <div
+        className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 pb-6" : "max-h-0"}`}
+      >
         <p className="text-gray-600 leading-relaxed">{answer}</p>
       </div>
     </div>
@@ -45,14 +49,14 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 // Trusted By Marquee
 function TrustedMarquee() {
   const logos = [
-    { icon: Coffee, name: 'Café Baku' },
-    { icon: Utensils, name: 'Restoran Əyləncə' },
-    { icon: ShoppingBag, name: 'Mağaza AZ' },
-    { icon: Store, name: 'Boutique Style' },
-    { icon: Heart, name: 'Spa Relax' },
-    { icon: Award, name: 'Fitness Pro' },
-    { icon: Coffee, name: 'Coffee House' },
-    { icon: Utensils, name: 'Dining Club' },
+    { icon: Coffee, name: "Café Baku" },
+    { icon: Utensils, name: "Restoran Əyləncə" },
+    { icon: ShoppingBag, name: "Mağaza AZ" },
+    { icon: Store, name: "Boutique Style" },
+    { icon: Heart, name: "Spa Relax" },
+    { icon: Award, name: "Fitness Pro" },
+    { icon: Coffee, name: "Coffee House" },
+    { icon: Utensils, name: "Dining Club" },
   ];
 
   return (
@@ -60,15 +64,17 @@ function TrustedMarquee() {
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-10"></div>
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-10"></div>
-        
+
         <div className="flex animate-marquee">
           {[...logos, ...logos].map((logo, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="flex items-center gap-3 mx-8 px-8 py-4 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
             >
               <logo.icon className="w-8 h-8 text-primary-500" />
-              <span className="font-semibold text-gray-700 whitespace-nowrap">{logo.name}</span>
+              <span className="font-semibold text-gray-700 whitespace-nowrap">
+                {logo.name}
+              </span>
             </div>
           ))}
         </div>
@@ -201,11 +207,7 @@ export default function LandingPage() {
                 <div className="w-48 h-48 bg-white rounded-2xl p-3 flex items-center justify-center">
                   {/* Real QR Code */}
                   <QRCodeSVG
-                    value={
-                      typeof window !== "undefined"
-                        ? `${process.env.NEXT_PUBLIC_APP_URL}/demo`
-                        : "/demo"
-                    }
+                    value={`${process.env.NEXT_PUBLIC_APP_URL}/demo`}
                     size={180}
                     level="H"
                     includeMargin={false}
