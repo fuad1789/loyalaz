@@ -13,6 +13,7 @@ declare module 'next-auth' {
       name: string;
       role: UserRole;
       tenantId: string | null;
+      emailVerified?: Date | null;
     };
   }
   
@@ -22,6 +23,7 @@ declare module 'next-auth' {
     name: string;
     role: UserRole;
     tenantId: string | null;
+    emailVerified?: Date | null;
   }
 }
 
@@ -94,6 +96,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           name: token.name,
           role: token.role,
           tenantId: token.tenantId,
+          emailVerified: null,
         };
       }
       return session;
